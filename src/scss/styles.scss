@@ -1,0 +1,58 @@
+@import "./partials/variables";
+@import "../../node_modules/bootstrap/scss/functions";
+
+// Original Bootstrap scss files
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none !important;
+  color: black !important;
+}
+
+.navbar-nav {
+  color: black;
+}
+
+.active {
+  color: black;
+  text-decoration: none;
+}
+
+.navLink {
+  width: 8rem;
+
+  @media (max-width: 1000px) {
+    font-size: 2rem;
+  }
+}
+
+.menuIcon {
+  border: none !important;
+}
+
+.navbar-toggler {
+  color: black !important;
+}
+
+.reverted-shadow {
+  box-shadow: 0 -3px 6px rgb(0 0 0 / 16%);
+}
+
+.faceIcon {
+  transition: color 0.3s ease;
+}
+
+.faceIcon:hover {
+  color: #3b5998;
+}
+
+@media (max-width: 576px) {
+  .soMe {
+    margin-top: 1rem !important;
+    text-align: left !important;
+  }
+}
