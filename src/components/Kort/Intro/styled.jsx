@@ -10,6 +10,7 @@ export const IntroCardWrapper = styled.section`
   margin-bottom: 1rem;
   background-color: #f4f4f4;
   margin-top: -2rem;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
   animation: ${IntroAnimation} 0.6s ease-in-out;
 `;
 

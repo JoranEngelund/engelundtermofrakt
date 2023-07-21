@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/pages/Home";
+import { About } from "./components/pages/About";
 
 /**
  * App Component is the entry point of the application and sets up the routing using React Router.
@@ -20,7 +21,7 @@ export default function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="*" element={<h1>Page not found</h1>} />
-        <Route path="/om-oss" element={<h1>Om oss</h1>} />
+        <Route path="/om-oss" element={<About />} />
         <Route path="/kontakt" element />
       </Route>
     </Routes>

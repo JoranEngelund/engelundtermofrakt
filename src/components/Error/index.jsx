@@ -1,3 +1,5 @@
+import * as s from "./styled";
+
 /**
  * Error Component displays an error message when content fails to load.
  *
@@ -9,9 +11,23 @@
  */
 export default function Error() {
   return (
-    <p>
-      Det ser ut som noe galt skjedde mens innholdet ble lastet inn. Prøv gjerne
-      igjen
-    </p>
+    <s.ErrorContainer>
+      <h1>Oups :( </h1>
+      <s.ErrorMessage>
+        Det ser ut som det er noe rusk i maskineriet
+      </s.ErrorMessage>
+      <s.ErrorMessage>
+        Prøv gjerne ved å laste inn på nytt, eller prøv igjen senere
+      </s.ErrorMessage>
+      <div>
+        <s.ReloadButton
+          onClick={() => {
+            window.location.reload();
+          }}
+        >
+          Last inn på nytt
+        </s.ReloadButton>
+      </div>
+    </s.ErrorContainer>
   );
 }

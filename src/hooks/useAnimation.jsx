@@ -20,9 +20,11 @@ export const useScrollAnimation = (threshold = 0.3) => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            entry.target.classList.add(`animate`);
             entry.target.style.animationPlayState = "running";
           } else {
             entry.target.style.animationPlayState = "paused";
+            entry.target.classList.remove(`animate`);
           }
         });
       },

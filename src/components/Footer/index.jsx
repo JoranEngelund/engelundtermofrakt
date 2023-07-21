@@ -21,7 +21,6 @@ import { FaFacebook } from "react-icons/fa";
  * @component
  * @returns {JSX.Element} Rendered JSX Element representing the footer section of the website.
  * @example
-
  * <Footer/>
  */
 export default function Footer() {
@@ -32,7 +31,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="mt-auto reverted-shadow d-flex justify-content-evenly">
+    <footer className="mt-auto reverted-shadow d-flex justify-content-evenly f">
       <Container>
         <Row className="mt-4 d-flex ">
           <Col xs={12} sm={6} md={6} lg={4} xl={4}>

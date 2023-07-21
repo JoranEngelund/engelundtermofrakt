@@ -13,6 +13,7 @@ export const CardWrapper = styled.section`
 `;
 
 export const Card = styled.div`
+  box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
   width: calc(50% - 1.5rem);
   background-color: #f4f4f4;
   border-radius: 0.5rem;
