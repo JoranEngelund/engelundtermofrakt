@@ -63,9 +63,13 @@ export default function Footer() {
           </Col>
           <Col xs={12} sm={6} md={6} lg={4} xl={4}>
             <styled.Ul className="d-flex flex-column align-items-start">
-              <styled.ImageFooter src="/src/assets/images/25-jubi.png" />
+              <styled.ImageFooter
+                src="/src/assets/images/25-jubi.png"
+                alt="25 års jubileum logo for Engelund Termofrakt AS"
+              />
               <styled.ImageFooter_GLP
                 src="/src/assets/images/glp.png"
+                alt="Logo for grønt landtransportprogram"
                 title="https://www.nho.no/samarbeid/gront-landtransportprogram/"
                 onClick={checkClick}
               />

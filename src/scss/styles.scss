@@ -4,6 +4,10 @@
 // Original Bootstrap scss files
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
+p {
+  font-family: "Open Sans";
+}
+
 body {
   scroll-behavior: smooth;
 }
@@ -99,9 +103,19 @@ a {
   font-weight: bold;
 }
 
+iframe {
+  width: 29rem;
+  height: 17rem;
+}
+
 @media (max-width: 576px) {
   .soMe {
     margin-top: 1rem !important;
     text-align: left !important;
+  }
+
+  iframe {
+    width: 17rem;
+    height: 17rem;
   }
 }

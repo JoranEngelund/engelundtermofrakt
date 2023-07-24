@@ -42,7 +42,7 @@ export const Slogan = styled.h1`
   text-align: center;
   color: white;
   font-weight: 400;
-  font-style: italic;
+  font-style: italic !important;
   width: 100%;
   padding: 1rem;
   background-color: rgb(0 0 0 / 44%);

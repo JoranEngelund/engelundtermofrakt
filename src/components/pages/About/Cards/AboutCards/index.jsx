@@ -63,6 +63,7 @@ const Timeline = ({ setObserver, callback, timelineData }) => {
             <s.Card className="post">
               <s.CardImage
                 src={post._embedded?.["wp:featuredmedia"][0].source_url}
+                alt={post._embedded?.["wp:featuredmedia"][0].alt_text}
               />
               <s.CardContent>
                 <s.CardTitle>{post.title.rendered}</s.CardTitle>

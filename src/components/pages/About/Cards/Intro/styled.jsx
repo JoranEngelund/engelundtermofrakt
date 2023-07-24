@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 import { IntroAnimation } from "../../../../../animation/styled";
-import { Link } from "react-router-dom";
 
 export const IntroCardWrapper = styled.section`
   display: flex;
