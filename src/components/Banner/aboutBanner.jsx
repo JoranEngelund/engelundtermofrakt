@@ -12,7 +12,6 @@ export const AboutBanner = () => {
   const bannerImage = data._embedded?.["wp:featuredmedia"][0].source_url;
   const bannerAltText = data._embedded?.["wp:featuredmedia"][0].alt_text;
   const title = data?.title?.rendered || "";
-  const path = window.location.pathname;
 
   return (
     <>

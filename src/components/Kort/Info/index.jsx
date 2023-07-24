@@ -24,6 +24,7 @@ export const InfoCards = () => {
           <s.CardImage
             ref={animatedRef}
             src={post._embedded?.["wp:featuredmedia"][0].source_url}
+            alt={post._embedded?.["wp:featuredmedia"][0].alt_text}
           />
           <s.CardTitle ref={animatedRef}> {post.title.rendered}</s.CardTitle>
           <s.CardParagraph ref={animatedRef}>

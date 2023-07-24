@@ -23,7 +23,7 @@ export const IntroCard = () => {
         <s.IntroCardWrapper key={post.id} id={post.id} ref={animatedRef}>
           <s.IntroTitle>{post.title.rendered}</s.IntroTitle>
           <s.IntroParagraph>
-            {post.content.rendered.replace(/<\/?p>/g, "")}}
+            {post.content.rendered.replace(/<\/?p>/g, "")}
           </s.IntroParagraph>
           <s.ButtonWrapper>
             <s.IntroButton to="/om-oss">Les mer</s.IntroButton>
