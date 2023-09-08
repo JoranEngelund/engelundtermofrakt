@@ -57,7 +57,7 @@ export default function Navigation() {
           <Offcanvas.Body>
             <Nav className="justify-content-end flex-grow-1 pe-3 gap-4 fs-5">
               <Nav.Link
-                className="navLink"
+                className="navLink gap-3"
                 href="/"
                 style={{ color: isActive("/") ? "black" : "" }}
               >

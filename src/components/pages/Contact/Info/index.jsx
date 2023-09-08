@@ -19,8 +19,8 @@ const ContactInfo = () => {
       <s.ContactWrapper>
         <s.ContactTitle>Slik når du oss</s.ContactTitle>
         <s.ContactContent>
-          <a href="tel:+47 23 36 62 00">
-            <FontAwesomeIcon icon={faPhone} /> 23 36 62 00
+          <a href="tel:+47 23 37 62 00">
+            <FontAwesomeIcon icon={faPhone} /> 23 37 62 00
           </a>
         </s.ContactContent>
         <s.ContactContent>

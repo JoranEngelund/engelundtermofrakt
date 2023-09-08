@@ -14,9 +14,12 @@ export const Card = styled.div`
     background-color: #f4f4f4;
     border-radius: 0.5rem;
     display: flex;
+    flex-direction: row;
     max-width: 1020px;
     animation: {IntroAnimation} 0.6s ease-in-out;
     box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+
+   
 
   @media (max-width: 765px) {
     background-color: #f4f4f4;

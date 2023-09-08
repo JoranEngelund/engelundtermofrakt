@@ -7,9 +7,9 @@ import * as s from "./styled";
  * @returns {Promise<Array>} A promise that resolves to an array of timeline data (posts).
  * @throws {Error} If there's an error fetching the data.
  */
-const yourApiCall = () => {
+const postApiCall = () => {
   return fetch(
-    `https://api.termofrakt.no/wp-json/wp/v2/posts?categories=9&_embed`
+    `https://api.termofrakt.no/wp-json/wp/v2/posts?categories=9&_embed&order=asc`
   )
     .then((response) => response.json())
     .catch((error) => {
@@ -91,7 +91,7 @@ export default function AboutCards() {
 
   useEffect(() => {
     // Fetch timeline data from the API
-    yourApiCall().then((data) => setTimelineData(data));
+    postApiCall().then((data) => setTimelineData(data));
   }, []);
 
   return (

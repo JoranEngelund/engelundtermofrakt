@@ -26,7 +26,7 @@ export default function HomeBanner() {
             title={bannerAltText}
           />
         )}
-        {title && <styled.Slogan>"{title}"</styled.Slogan>}
+        {title && <styled.Slogan>{title}</styled.Slogan>}
       </styled.BannerContainer>
     </>
   );

@@ -38,8 +38,8 @@ export default function Footer() {
             <styled.Ul>
               <h4 className="fs-5 mb-4">KONTAKT</h4>
               <li className="mt-4">
-                <a href="tel:+47 23 36 62 00">
-                  <FontAwesomeIcon icon={faPhone} /> 23 36 62 00
+                <a href="tel:+47 23 37 62 00">
+                  <FontAwesomeIcon icon={faPhone} /> 23 37 62 00
                 </a>
               </li>
               <li className="my-3">
