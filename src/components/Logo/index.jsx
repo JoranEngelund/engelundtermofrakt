@@ -1,4 +1,5 @@
 import * as styled from "./styled";
+import logoImage from "../../assets/images/logo_alt_v3.png";
 
 /**
  * Logo Component displays the logo of Engelund Termofrakt AS.
@@ -15,7 +16,7 @@ export default function Logo() {
       onClick={() => {
         window.location.replace("/");
       }}
-      src="/src/assets/images/logo_alt_v3.png"
+      src={logoImage}
       alt="logo av Engelund Termofrakt AS"
       title="Hjem"
     />

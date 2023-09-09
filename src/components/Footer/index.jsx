@@ -10,6 +10,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
 import { FaFacebook } from "react-icons/fa";
+import nlf from "../../assets/images/nlf.png";
+import glp from "../../assets/images/glp.png";
+import jubi from "../../assets/images/25-jubi.png";
 
 /**
  * Footer Component displays the footer section of the website.
@@ -25,11 +28,12 @@ import { FaFacebook } from "react-icons/fa";
  */
 export default function Footer() {
   const checkClick = () => {
-    window.location.replace(
-      "https://www.nho.no/samarbeid/gront-landtransportprogram/"
-    );
+    window.open("https://www.nho.no/samarbeid/gront-landtransportprogram/");
   };
 
+  const checkClickNlf = () => {
+    window.open("https://lastebil.no/Om-NLF");
+  };
   return (
     <footer className="mt-auto reverted-shadow d-flex justify-content-evenly f">
       <Container>
@@ -63,16 +67,27 @@ export default function Footer() {
           </Col>
           <Col xs={12} sm={6} md={6} lg={4} xl={4}>
             <styled.Ul className="d-flex flex-column align-items-start">
-              <styled.ImageFooter
-                src="/src/assets/images/25-jubi.png"
-                alt="25 års jubileum logo for Engelund Termofrakt AS"
-              />
-              <styled.ImageFooter_GLP
-                src="/src/assets/images/glp.png"
-                alt="Logo for grønt landtransportprogram"
-                title="https://www.nho.no/samarbeid/gront-landtransportprogram/"
-                onClick={checkClick}
-              />
+              <styled.Li>
+                <styled.ImageFooter
+                  src={jubi}
+                  alt="25 års jubileum logo for Engelund Termofrakt AS"
+                />
+                <styled.ImageFooter
+                  style={{ cursor: "pointer" }}
+                  src={nlf}
+                  alt="Norges Lastebileier-Forbund (NLF)"
+                  title="https://lastebil.no/Om-NLF"
+                  onClick={checkClickNlf}
+                />
+              </styled.Li>
+              <li>
+                <styled.ImageFooter_GLP
+                  src={glp}
+                  alt="Logo for grønt-landtransportprogram"
+                  title="https://www.nho.no/samarbeid/gront-landtransportprogram/"
+                  onClick={checkClick}
+                />
+              </li>
             </styled.Ul>
           </Col>
           <Col md={12} lg={4} xl={4} className="d-flex flex-column soMe">
@@ -80,8 +95,9 @@ export default function Footer() {
               <h4 className="fs-5">SOSIAL MEDIA</h4>
               <li>
                 <Link
+                  target="_blank"
                   onClick={() => {
-                    window.location.replace(
+                    window.open(
                       "https://www.facebook.com/people/Engelund-Termofrakt-AS/100063636875809/"
                     );
                   }}

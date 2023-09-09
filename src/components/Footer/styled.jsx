@@ -15,3 +15,7 @@ export const ImageFooter_GLP = styled.img`
   cursor: pointer;
 `;
 
+export const Li = styled.li`
+  display: flex;
+  gap: 2rem;
+`;
