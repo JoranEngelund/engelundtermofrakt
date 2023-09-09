@@ -10,6 +10,7 @@ import {
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import * as s from "./StyledNav";
 
 /**
  * Navigation Component displays the navigation header of the website.
@@ -64,22 +65,22 @@ export default function Navigation() {
                 <FontAwesomeIcon className="me-2" icon={faHome} />
                 Hjem
               </Nav.Link>
-              <Nav.Link
+              <s.NavLink
                 className="navLink"
-                onClick={() => window.location.replace("/om-oss")}
+                to="/om-oss"
                 style={{ color: isActive("/om-oss") ? "black" : "" }}
               >
                 <FontAwesomeIcon className="me-2" icon={faInfoCircle} />
-                Om oss{" "}
-              </Nav.Link>
-              <Nav.Link
+                Om oss
+              </s.NavLink>
+              <s.NavLink
                 className="navLink"
-                onClick={() => window.location.replace("/kontakt")}
+                to="/kontakt"
                 style={{ color: isActive("/kontakt") ? "black" : "" }}
               >
                 <FontAwesomeIcon className="me-2" icon={faPhone} />
                 Kontakt
-              </Nav.Link>
+              </s.NavLink>
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
