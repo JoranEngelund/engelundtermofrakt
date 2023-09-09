@@ -20,7 +20,7 @@ export const LoadingContainer = styled.div`
 `;
 
 export const LoadingIcon = styled.img`
-  animation: ${spin} 2s infinite linear;
+  animation: ${spin} 1s infinite linear;
   max-width: 100%;
   height: auto;
 `;

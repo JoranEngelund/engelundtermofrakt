@@ -1,4 +1,5 @@
 import * as s from "./styled";
+import logoWheel from "./../../assets/images/wheel_logo.png";
 
 /**
  * Loader Component displays a loading animation or image while content is being loaded.
@@ -13,7 +14,7 @@ import * as s from "./styled";
 export default function Loader() {
   return (
     <s.LoadingContainer>
-      <s.LoadingIcon src="/src/assets/images/wheel_logo.png" alt="...loading" />
+      <s.LoadingIcon src={logoWheel} alt="...loading" />
     </s.LoadingContainer>
   );
 }
