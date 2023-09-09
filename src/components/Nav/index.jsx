@@ -38,52 +38,35 @@ export default function Navigation() {
     <Navbar expand="lg" className="bg-light shadow mb-3">
       <Container fluid>
         <Logo />
-        <Navbar.Toggle
-          aria-controls="offcanvasNavbar-expand-lg"
-          className="menuIcon"
-        />
-        <Navbar.Offcanvas
-          id="offcanvasNavbar-expand-lg"
-          aria-labelledby="offcanvasNavbarLabel-expand-lg"
-          placement="end"
-        >
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title
-              id="offcanvasNavbarLabel-expand-lg"
-              className="fs-3"
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="justify-content-end flex-grow-1 pe-3 gap-4 fs-5">
+            <Nav.Link
+              className="navLink gap-3"
+              href="/"
+              style={{ color: isActive("/") ? "black" : "" }}
             >
-              Meny
-            </Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            <Nav className="justify-content-end flex-grow-1 pe-3 gap-4 fs-5">
-              <Nav.Link
-                className="navLink gap-3"
-                href="/"
-                style={{ color: isActive("/") ? "black" : "" }}
-              >
-                <FontAwesomeIcon className="me-2" icon={faHome} />
-                Hjem
-              </Nav.Link>
-              <s.NavLink
-                className="navLink"
-                to="/om-oss"
-                style={{ color: isActive("/om-oss") ? "black" : "" }}
-              >
-                <FontAwesomeIcon className="me-2" icon={faInfoCircle} />
-                Om oss
-              </s.NavLink>
-              <s.NavLink
-                className="navLink"
-                to="/kontakt"
-                style={{ color: isActive("/kontakt") ? "black" : "" }}
-              >
-                <FontAwesomeIcon className="me-2" icon={faPhone} />
-                Kontakt
-              </s.NavLink>
-            </Nav>
-          </Offcanvas.Body>
-        </Navbar.Offcanvas>
+              <FontAwesomeIcon className="me-2" icon={faHome} />
+              Hjem
+            </Nav.Link>
+            <s.NavLink
+              className="navLink"
+              to="/om-oss"
+              style={{ color: isActive("/om-oss") ? "black" : "" }}
+            >
+              <FontAwesomeIcon className="me-2" icon={faInfoCircle} />
+              Om oss
+            </s.NavLink>
+            <s.NavLink
+              className="navLink"
+              to="/kontakt"
+              style={{ color: isActive("/kontakt") ? "black" : "" }}
+            >
+              <FontAwesomeIcon className="me-2" icon={faPhone} />
+              Kontakt
+            </s.NavLink>
+          </Nav>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );
