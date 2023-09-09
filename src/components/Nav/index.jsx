@@ -66,7 +66,7 @@ export default function Navigation() {
               </Nav.Link>
               <Nav.Link
                 className="navLink"
-                href="/om-oss"
+                onClick={() => window.location.replace("/om-oss")}
                 style={{ color: isActive("/om-oss") ? "black" : "" }}
               >
                 <FontAwesomeIcon className="me-2" icon={faInfoCircle} />
@@ -74,7 +74,7 @@ export default function Navigation() {
               </Nav.Link>
               <Nav.Link
                 className="navLink"
-                href="/kontakt"
+                onClick={() => window.location.replace("/kontakt")}
                 style={{ color: isActive("/kontakt") ? "black" : "" }}
               >
                 <FontAwesomeIcon className="me-2" icon={faPhone} />

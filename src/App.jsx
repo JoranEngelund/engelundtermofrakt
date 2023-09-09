@@ -21,9 +21,9 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="*" element={<h1>Page not found</h1>} />
         <Route path="/om-oss" element={<About />} />
         <Route path="/kontakt" element={<Contact />} />
+        <Route path="*" element={<h1>Page not found</h1>} />
       </Route>
     </Routes>
   );
