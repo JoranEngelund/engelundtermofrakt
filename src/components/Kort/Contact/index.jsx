@@ -28,7 +28,7 @@ export const ContactCard = () => {
             {post.content.rendered.replace(/<\/?p>/g, "")}
           </s.ContactParagraph>
           <s.ButtonWrapper ref={animatedRef}>
-            <s.ContactButton to="/kontakt">Kontakt oss</s.ContactButton>
+            <s.ContactButton to="kontakt">Kontakt oss</s.ContactButton>
           </s.ButtonWrapper>
         </s.ContactCardWrapper>
       ))}

@@ -51,16 +51,16 @@ export default function Navigation() {
             </Nav.Link>
             <s.NavLink
               className="navLink"
-              to="/om-oss"
-              style={{ color: isActive("/om-oss") ? "black" : "" }}
+              to="om-oss"
+              style={{ color: isActive("om-oss") ? "black" : "" }}
             >
               <FontAwesomeIcon className="me-2" icon={faInfoCircle} />
               Om oss
             </s.NavLink>
             <s.NavLink
               className="navLink"
-              to="/kontakt"
-              style={{ color: isActive("/kontakt") ? "black" : "" }}
+              to="kontakt"
+              style={{ color: isActive("kontakt") ? "black" : "" }}
             >
               <FontAwesomeIcon className="me-2" icon={faPhone} />
               Kontakt
