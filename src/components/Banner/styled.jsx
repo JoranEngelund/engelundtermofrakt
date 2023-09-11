@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { FadeInAnimation } from "../../animation/styled";
 
 export const BannerContainer = styled.section`
-  max-width: 100vw;
+  max-width: 100%;
 `;
 
 export const Banner = styled.img`
@@ -14,7 +14,7 @@ export const Banner = styled.img`
 export const AboutBanner = styled.img`
   left: 0px;
   top: 0;
-  width: 100vw;
+  width: 100%;
   height: 24rem;
   object-fit: cover;
   object-position: top;
