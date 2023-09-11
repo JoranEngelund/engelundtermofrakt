@@ -1,0 +1,41 @@
+# Sample workflow for building and deploying a Jekyll site to GitHub Pages with a custom domain
+name: Deploy Jekyll with GitHub Pages and Custom Domain
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches:
+      - main
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# ...
+
+jobs:
+  # Build job
+  build:
+    # ...
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      # Add this step to configure the custom domain
+      - name: Configure custom domain
+        run: echo 'termofrakt.no' > ./_site/CNAME
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages # You can use your target branch here
+          folder: ./_site
