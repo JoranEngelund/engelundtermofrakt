@@ -26,7 +26,7 @@ export const IntroCard = () => {
             {post.content.rendered.replace(/<\/?p>/g, "")}
           </s.IntroParagraph>
           <s.ButtonWrapper>
-            <s.IntroButton to="/om-oss">Les mer</s.IntroButton>
+            <s.IntroButton to="om-oss">Les mer</s.IntroButton>
           </s.ButtonWrapper>
         </s.IntroCardWrapper>
       ))}
