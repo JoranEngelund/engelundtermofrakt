@@ -9,7 +9,7 @@ export const IntroCardWrapper = styled.section`
   margin-bottom: 1rem;
   background-color: #f4f4f4;
   margin-top: -2rem;
-  width: 100vw;
+  width: 100%;
   animation: ${IntroAnimation} 0.6s ease-in-out;
 `;
 
