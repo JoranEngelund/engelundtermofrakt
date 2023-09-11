@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, Redirect } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/pages/Home";
@@ -21,11 +21,10 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="om-oss" element={<About />} />
-        <Route path="kontakt" element={<Contact />} />
+        <Route index path="om-oss" element={<About />} />
+        <Route index path="kontakt" element={<Contact />} />
         <Route path="*" element={<h1>Page not found</h1>} />
       </Route>
-      <Redirect to="/" />
     </Routes>
   );
 }
