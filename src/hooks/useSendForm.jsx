@@ -34,7 +34,6 @@ const useSendForm = (url) => {
       if (response.ok) {
         setIsSuccess(true);
       }
-      console.log(json);
     } catch (error) {
       setIsError(true);
       console.log(error);
