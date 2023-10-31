@@ -42,6 +42,10 @@ export const Button = styled.button`
   &:hover {
     background-color: rgb(43, 32, 112, 81%);
   }
+
+  @media (max-width: 370px) {
+    padding: 0.3rem 5rem;
+  }
 `;
 
 export const FileWrapper = styled.div`
