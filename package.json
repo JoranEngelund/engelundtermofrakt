@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build /build",
+    "build": "vite build",
     "compiler": "sass src/scss:dist/css",
     "watch": "sass --watch src/scss:dist/css",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
