@@ -34,7 +34,7 @@ export const IntroButton = styled(Link)`
   padding: 0.3rem 1.9rem;
   border: none;
   box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
-  border-radius: 5%;
+  border-radius: 3px;
   margin: 1rem 0 2rem 0;
   transition: background-color 0.3s ease;
 
