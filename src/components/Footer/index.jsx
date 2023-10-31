@@ -38,6 +38,7 @@ export default function Footer() {
     <footer className="mt-auto  d-flex justify-content-evenly f">
       <Container>
         <Row className="mt-4 d-flex ">
+          <hr />
           <Col xs={12} sm={6} md={6} lg={4} xl={4}>
             <styled.Ul>
               <h4 className="fs-5 mb-4">KONTAKT</h4>
