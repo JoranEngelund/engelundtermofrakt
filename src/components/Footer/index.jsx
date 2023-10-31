@@ -35,7 +35,7 @@ export default function Footer() {
     window.open("https://lastebil.no/Om-NLF");
   };
   return (
-    <footer className="mt-auto reverted-shadow d-flex justify-content-evenly f">
+    <footer className="mt-auto  d-flex justify-content-evenly f">
       <Container>
         <Row className="mt-4 d-flex ">
           <Col xs={12} sm={6} md={6} lg={4} xl={4}>
@@ -117,7 +117,15 @@ export default function Footer() {
             <p>Copyright © 2023 Engelund Termofrakt AS, All rights reserved</p>
           </Col>
           <Col className="text-end">
-            <Link>Design & Utvikling: Engelund Utvikling</Link>
+            <Link
+              title="engelundutvikling.no"
+              target="_blank"
+              onClick={() => {
+                window.open("https://engelundutvikling.no");
+              }}
+            >
+              Design & Utvikling: Engelund Utvikling
+            </Link>
           </Col>
         </Row>
       </Container>

@@ -9,7 +9,7 @@ import {
   faHome,
   faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import Offcanvas from "react-bootstrap/Offcanvas";
+
 import * as s from "./StyledNav";
 
 /**
@@ -35,7 +35,7 @@ export default function Navigation() {
   };
 
   return (
-    <Navbar expand="lg" className="bg-light shadow mb-3">
+    <Navbar expand="lg" className="mb-3">
       <Container fluid>
         <Logo />
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

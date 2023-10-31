@@ -1,5 +1,6 @@
 import * as s from "./styled";
 import logoWheel from "./../../assets/images/wheel_logo.png";
+import { PuffLoader, PulseLoader } from "react-spinners";
 
 /**
  * Loader Component displays a loading animation or image while content is being loaded.
@@ -14,7 +15,11 @@ import logoWheel from "./../../assets/images/wheel_logo.png";
 export default function Loader() {
   return (
     <s.LoadingContainer>
-      <s.LoadingIcon src={logoWheel} alt="...loading" />
+      <PuffLoader size={100} color="#2b2070" />
     </s.LoadingContainer>
   );
 }
+
+export const FormLoader = () => {
+  return <PulseLoader size={7} color="#ffffff" />;
+};

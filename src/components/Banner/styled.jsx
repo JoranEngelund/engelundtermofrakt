@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { FadeInAnimation } from "../../animation/styled";
+import { FadeInAnimation, IntroAnimation } from "../../animation/styled";
 
 export const BannerContainer = styled.section`
   max-width: 100%;
@@ -18,7 +18,7 @@ export const AboutBanner = styled.img`
   height: 24rem;
   object-fit: cover;
   object-position: top;
-  animation: ${FadeInAnimation} 0.6s ease-in-out;
+  animation: ${IntroAnimation} 0.6s ease-in-out;
 
   @media (max-width: 2000px) {
     height: 21rem;
