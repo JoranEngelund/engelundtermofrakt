@@ -4,7 +4,6 @@ import * as s from "../styled";
 import { FormLoader } from "../../../../Loader";
 import { useEffect, useState } from "react";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
-import { CONTACT_URL } from "../../../../../constants";
 
 /**
  * ContactUs component represents a form for users to submit their contact information and messages.
@@ -20,8 +19,72 @@ import { CONTACT_URL } from "../../../../../constants";
  */
 const ContactUs = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const { sendFormData, isLoading, isError, isSuccess } =
-    useSendForm(CONTACT_URL);
+  const { sendFormData, isLoading, isError, isSuccess } = useSendForm(
+    import.meta.env.VITE_CONTACT_FORM
+  );
+
+  const [challengeType, setChallengeType] = useState("math");
+  const [challenge, setChallenge] = useState("");
+  const [userResponse, setUserResponse] = useState("");
+  const [isValid, setIsValid] = useState(false);
+  const colors = [
+    "Red",
+    "Green",
+    "Blue",
+    "Yellow",
+    "Orange",
+    "Purple",
+    "Pink",
+    "Brown",
+    "Black",
+    "White",
+    "Gray",
+    "Cyan",
+    "Magenta",
+    "Teal",
+    "Maroon",
+    "Gold",
+    "Silver",
+    "Indigo",
+  ];
+
+  const generateMathChallenge = () => {
+    const number1 = Math.floor(Math.random() * 10) + 1;
+    const number2 = Math.floor(Math.random() * 10) + 1;
+    const operators = ["+", "-", "*", "/"];
+    const operator = operators[Math.floor(Math.random() * operators.length)];
+    const challengeString = `${number1} ${operator} ${number2}`;
+    const expectedAnswer = eval(challengeString);
+    setChallenge(challengeString);
+    sessionStorage.setItem("captchaAnswer", expectedAnswer);
+  };
+
+  const generateLogicPuzzle = () => {
+    const correctColor = colors[Math.floor(Math.random() * colors.length)];
+    const challengeString = `Write in ${correctColor} color`;
+    setChallenge(challengeString);
+    sessionStorage.setItem("captchaAnswer", correctColor);
+  };
+
+  const generateChallenge = () => {
+    const randomType = Math.random() < 0.5 ? "math" : "logic";
+    setChallengeType(randomType);
+    if (randomType === "math") {
+      generateMathChallenge();
+    } else {
+      generateLogicPuzzle();
+    }
+  };
+
+  useEffect(() => {
+    generateChallenge();
+  }, []); // Run only once on component mount
+
+  const handleUserResponseChange = (e) => {
+    setUserResponse(e.target.value);
+    const expectedAnswer = sessionStorage.getItem("captchaAnswer");
+    setIsValid(e.target.value.toLowerCase() === expectedAnswer.toLowerCase());
+  };
 
   const {
     control,
@@ -43,7 +106,9 @@ const ContactUs = () => {
       formData.append(key, value);
     });
 
-    sendFormData(formData);
+    if (isValid) {
+      sendFormData(formData);
+    }
   };
   return (
     <>
@@ -201,6 +266,24 @@ const ContactUs = () => {
             </>
           )}
         />
+        <hr />
+        <s.ChallengeContainer>
+          <s.Label>{challenge} *</s.Label>
+          <div>
+            <s.ChallengeInput
+              type="text"
+              value={userResponse}
+              onChange={handleUserResponseChange}
+              placeholder="Answer"
+            />
+          </div>
+          {isValid ? <s.StyledCorrectIcon icon={faCircleCheck} /> : null}
+          <s.ChallengeButtonContainer>
+            <s.ChallengeButton onClick={generateChallenge}>
+              Generate Challenge
+            </s.ChallengeButton>
+          </s.ChallengeButtonContainer>
+        </s.ChallengeContainer>
         <hr />
         <s.ButtonContainer>
           <s.Button type="submit">

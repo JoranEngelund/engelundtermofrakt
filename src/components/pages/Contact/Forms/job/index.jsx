@@ -4,7 +4,6 @@ import useSendForm from "../../../../../hooks/useSendForm";
 import { useState, useEffect } from "react";
 import { FormLoader } from "../../../../Loader";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
-import { JOB_URL } from "../../../../../constants";
 
 /**
  * JobForm component represents a form for users to submit job applications along with their details and attachments.
@@ -21,10 +20,75 @@ import { JOB_URL } from "../../../../../constants";
 const JobForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const { sendFormData, isLoading, isError, isSuccess } = useSendForm(JOB_URL);
+  const { sendFormData, isLoading, isError, isSuccess } = useSendForm(
+    import.meta.env.VITE_JOB_FORM
+  );
 
   const [selectedCV, setSelectedCV] = useState(null);
   const [selectedApplicationFile, setSelectedApplicationFile] = useState(null);
+
+  const [challengeType, setChallengeType] = useState("math");
+  const [challenge, setChallenge] = useState("");
+  const [userResponse, setUserResponse] = useState("");
+  const [isValid, setIsValid] = useState(false);
+  const colors = [
+    "Red",
+    "Green",
+    "Blue",
+    "Yellow",
+    "Orange",
+    "Purple",
+    "Pink",
+    "Brown",
+    "Black",
+    "White",
+    "Gray",
+    "Cyan",
+    "Magenta",
+    "Teal",
+    "Maroon",
+    "Gold",
+    "Silver",
+    "Indigo",
+  ];
+
+  const generateMathChallenge = () => {
+    const number1 = Math.floor(Math.random() * 10) + 1;
+    const number2 = Math.floor(Math.random() * 10) + 1;
+    const operators = ["+", "-", "*", "/"];
+    const operator = operators[Math.floor(Math.random() * operators.length)];
+    const challengeString = `${number1} ${operator} ${number2}`;
+    const expectedAnswer = eval(challengeString);
+    setChallenge(challengeString);
+    sessionStorage.setItem("captchaAnswer", expectedAnswer);
+  };
+
+  const generateLogicPuzzle = () => {
+    const correctColor = colors[Math.floor(Math.random() * colors.length)];
+    const challengeString = `Write in ${correctColor} color`;
+    setChallenge(challengeString);
+    sessionStorage.setItem("captchaAnswer", correctColor);
+  };
+
+  const generateChallenge = () => {
+    const randomType = Math.random() < 0.5 ? "math" : "logic";
+    setChallengeType(randomType);
+    if (randomType === "math") {
+      generateMathChallenge();
+    } else {
+      generateLogicPuzzle();
+    }
+  };
+
+  useEffect(() => {
+    generateChallenge();
+  }, []); // Run only once on component mount
+
+  const handleUserResponseChange = (e) => {
+    setUserResponse(e.target.value);
+    const expectedAnswer = sessionStorage.getItem("captchaAnswer");
+    setIsValid(e.target.value.toLowerCase() === expectedAnswer.toLowerCase());
+  };
 
   const {
     control,
@@ -63,7 +127,9 @@ const JobForm = () => {
       formData.append(`application-file`, selectedApplicationFile);
     }
 
-    sendFormData(formData);
+    if (isValid) {
+      sendFormData(formData);
+    }
   };
 
   return (
@@ -95,7 +161,7 @@ const JobForm = () => {
       </s.InfoContainer>
 
       <hr />
-      <s.Form onSubmit={handleSubmit(onSubmit)}>
+      <s.Form id="job-form" onSubmit={handleSubmit(onSubmit)}>
         <s.Label htmlFor="your-name">
           Fornavn <i>(First Name)</i> *
         </s.Label>
@@ -343,6 +409,24 @@ const JobForm = () => {
             </label>
           </s.FileInput>
         </s.FileWrapper>
+        <hr />
+        <s.ChallengeContainer>
+          <s.Label>{challenge} *</s.Label>
+          <div>
+            <s.ChallengeInput
+              type="text"
+              value={userResponse}
+              onChange={handleUserResponseChange}
+              placeholder="Answer"
+            />
+          </div>
+          {isValid ? <s.StyledCorrectIcon icon={faCircleCheck} /> : null}
+          <s.ChallengeButtonContainer>
+            <s.ChallengeButton onClick={generateChallenge}>
+              Generate Challenge
+            </s.ChallengeButton>
+          </s.ChallengeButtonContainer>
+        </s.ChallengeContainer>
         <hr />
         <s.ButtonContainer>
           <s.Button type="submit">
