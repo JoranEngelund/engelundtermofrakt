@@ -27,43 +27,16 @@ const ContactUs = () => {
   const [challenge, setChallenge] = useState("");
   const [userResponse, setUserResponse] = useState("");
   const [isValid, setIsValid] = useState(false);
-  const colors = [
-    "Red",
-    "Green",
-    "Blue",
-    "Yellow",
-    "Orange",
-    "Purple",
-    "Pink",
-    "Brown",
-    "Black",
-    "White",
-    "Gray",
-    "Cyan",
-    "Magenta",
-    "Teal",
-    "Maroon",
-    "Gold",
-    "Silver",
-    "Indigo",
-  ];
 
   const generateMathChallenge = () => {
     const number1 = Math.floor(Math.random() * 10) + 1;
     const number2 = Math.floor(Math.random() * 10) + 1;
-    const operators = ["+", "-", "*", "/"];
+    const operators = ["+", "-"];
     const operator = operators[Math.floor(Math.random() * operators.length)];
     const challengeString = `${number1} ${operator} ${number2}`;
     const expectedAnswer = eval(challengeString);
     setChallenge(challengeString);
     sessionStorage.setItem("captchaAnswer", expectedAnswer);
-  };
-
-  const generateLogicPuzzle = () => {
-    const correctColor = colors[Math.floor(Math.random() * colors.length)];
-    const challengeString = `Write in ${correctColor} color`;
-    setChallenge(challengeString);
-    sessionStorage.setItem("captchaAnswer", correctColor);
   };
 
   const generateChallenge = () => {
@@ -72,7 +45,8 @@ const ContactUs = () => {
     if (randomType === "math") {
       generateMathChallenge();
     } else {
-      generateLogicPuzzle();
+      // You can add additional logic challenges here if needed
+      generateMathChallenge(); // For simplicity, using math challenge again
     }
   };
 
@@ -268,26 +242,25 @@ const ContactUs = () => {
         />
         <hr />
         <s.ChallengeContainer>
-          <s.Label>{challenge} *</s.Label>
-          <div>
+          <s.Label>Security Question *</s.Label>
+          <s.QuestionContainer>
+            <p>{challenge}</p>
+            <p>=</p>
             <s.ChallengeInput
               type="text"
               value={userResponse}
               onChange={handleUserResponseChange}
               placeholder="Answer"
             />
-          </div>
-          {isValid ? <s.StyledCorrectIcon icon={faCircleCheck} /> : null}
-          <s.ChallengeButtonContainer>
-            <s.ChallengeButton onClick={generateChallenge}>
-              Generate Challenge
-            </s.ChallengeButton>
-          </s.ChallengeButtonContainer>
+            <div>
+              {isValid ? <s.StyledCorrectIcon icon={faCircleCheck} /> : null}
+            </div>
+          </s.QuestionContainer>
         </s.ChallengeContainer>
         <hr />
         <s.ButtonContainer>
           <s.Button type="submit">
-            {isLoading ? <FormLoader /> : "Kontakt oss"}
+            {isLoading ? <FormLoader /> : "Send inn melding"}
           </s.Button>
         </s.ButtonContainer>
         {isError ? (

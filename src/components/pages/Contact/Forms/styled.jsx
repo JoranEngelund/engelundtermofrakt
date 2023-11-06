@@ -52,8 +52,12 @@ export const Button = styled.button`
 export const ChallengeContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+`;
+
+export const QuestionContainer = styled.div`
+  display: flex;
+  gap: 2rem;
+  align-items: baseline;
 `;
 
 export const ChallengeInput = styled.input`
