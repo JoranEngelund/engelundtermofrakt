@@ -2,16 +2,16 @@ import useApi from "../../hooks/useApi";
 import * as s from "./styled";
 
 /**
- * About page hero banner
+ * Renders a gallery banner with image and title from WordPress
  */
-export const AboutBanner = () => {
-  const API_URL = `https://api.termofrakt.no/wp-json/wp/v2/pages/45/?&_embed`;
+const GalleryBanner = () => {
+  const API_URL = `https://api.termofrakt.no/wp-json/wp/v2/pages/137/?&_embed`;
   const { data } = useApi(API_URL);
 
   const media = data?._embedded?.["wp:featuredmedia"]?.[0];
   const bannerImage = media?.source_url;
-  const bannerAltText = media?.alt_text || "Om Engelund Termofrakt";
-  const title = data?.title?.rendered || "Om oss";
+  const bannerAltText = media?.alt_text || "Galleri Engelund Termofrakt";
+  const title = data?.title?.rendered || "Galleri";
 
   return (
     <s.BannerContainer>
@@ -25,3 +25,5 @@ export const AboutBanner = () => {
     </s.BannerContainer>
   );
 };
+
+export default GalleryBanner;
