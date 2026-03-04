@@ -1,6 +1,38 @@
-import { styled } from "styled-components";
-import { FadeInAnimation, IntroAnimation } from "../../animation/styled";
+import { styled, keyframes } from "styled-components";
+import { IntroAnimation } from "../../animation/styled";
 import { Link } from "react-router-dom";
+
+/* === Hero animations === */
+
+const heroReveal = keyframes`
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(1.10);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: scale(1.06);
+  }
+`;
+
+const heroZoom = keyframes`
+  from { transform: scale(1.06); }
+  to   { transform: scale(1.00); }
+`;
+
+const overlayFade = keyframes`
+  from { opacity: 0; }
+  to   { opacity: 1; }
+`;
+
+const textUp = keyframes`
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+`;
+
+/* === Layout === */
 
 export const BannerContainer = styled.section`
   position: relative;
@@ -10,6 +42,7 @@ export const BannerContainer = styled.section`
   margin-bottom: 4rem;
 `;
 
+/* Hero image: reveal + zoom (two animations, no conflict) */
 export const Banner = styled.img`
   position: absolute;
   inset: 0;
@@ -19,23 +52,26 @@ export const Banner = styled.img`
   object-fit: cover;
   object-position: center;
 
-  animation: ${FadeInAnimation} 0.8s ease-in-out;
+  /* start state */
+  opacity: 0;
+  filter: blur(10px);
+  transform: scale(1.1);
 
-  /* subtil zoom */
-  transform: scale(1.06);
-  animation: heroZoom 18s ease-out forwards;
+  animation:
+    ${heroReveal} 900ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
+    ${heroZoom} 18s ease-out 900ms forwards;
 
-  @keyframes heroZoom {
-    from {
-      transform: scale(1.08);
-    }
-    to {
-      transform: scale(1);
-    }
+  will-change: transform, opacity, filter;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    opacity: 1;
+    filter: none;
+    transform: none;
   }
 `;
 
-/* overlay – viktig: venstre mørkere */
+/* overlay – important: darker left + soft reveal */
 export const Overlay = styled.div`
   position: absolute;
   inset: 0;
@@ -53,9 +89,17 @@ export const Overlay = styled.div`
       rgba(11, 18, 32, 0.12) 70%,
       rgba(11, 18, 32, 0.02) 100%
     );
+
+  opacity: 0;
+  animation: ${overlayFade} 600ms ease-out 220ms forwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    opacity: 1;
+  }
 `;
 
-/* tekstområde */
+/* content area */
 export const HeroContent = styled.div`
   position: relative;
   z-index: 2;
@@ -71,10 +115,10 @@ export const HeroContent = styled.div`
   justify-content: center;
   gap: 12px;
 
-  /* venstre-alignment */
   align-items: flex-start;
 `;
 
+/* text stagger */
 export const HeroTitle = styled.h1`
   margin: 0;
   max-width: 720px;
@@ -84,9 +128,16 @@ export const HeroTitle = styled.h1`
   letter-spacing: -0.02em;
 
   color: rgba(255, 255, 255, 0.96);
-
-  /* litt “premium” */
   text-shadow: 0 8px 26px rgba(0, 0, 0, 0.35);
+
+  opacity: 0;
+  animation: ${textUp} 650ms cubic-bezier(0.2, 0.8, 0.2, 1) 280ms forwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 `;
 
 export const HeroSubtitle = styled.p`
@@ -95,6 +146,15 @@ export const HeroSubtitle = styled.p`
 
   font-size: 1.05rem;
   color: rgba(255, 255, 255, 0.72);
+
+  opacity: 0;
+  animation: ${textUp} 650ms cubic-bezier(0.2, 0.8, 0.2, 1) 380ms forwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 `;
 
 export const CTA = styled(Link)`
@@ -118,13 +178,22 @@ export const CTA = styled(Link)`
     transform 180ms ease,
     filter 180ms ease;
 
+  opacity: 0;
+  animation: ${textUp} 650ms cubic-bezier(0.2, 0.8, 0.2, 1) 480ms forwards;
+
   &:hover {
     transform: translateY(-1px);
     filter: brightness(1.05);
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 `;
 
-/* (Beholder AboutBanner fra din opprinnelige) */
+/* AboutBanner (kept as-is) */
 export const AboutBanner = styled.img`
   left: 0px;
   top: 0;
@@ -151,8 +220,7 @@ export const AboutBanner = styled.img`
   }
 `;
 
-/* Du kan beholde Slogan/PageTitle hvis du bruker de andre steder,
-   men heroen bruker nå HeroTitle/HeroSubtitle/CTA */
+/* old ones hidden */
 export const Slogan = styled.h1`
   display: none;
 `;
